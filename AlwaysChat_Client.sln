@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.489
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlwaysChat_Client", "AlwaysChat_Client\AlwaysChat_Client.csproj", "{172D3828-D90C-474E-A064-1F9525F52273}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{172D3828-D90C-474E-A064-1F9525F52273}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{172D3828-D90C-474E-A064-1F9525F52273}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{172D3828-D90C-474E-A064-1F9525F52273}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{172D3828-D90C-474E-A064-1F9525F52273}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B2860CC1-28C3-4D3B-916F-E05512B1F195}
+	EndGlobalSection
+EndGlobal

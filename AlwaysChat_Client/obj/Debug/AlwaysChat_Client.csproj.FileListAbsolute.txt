@@ -1,0 +1,15 @@
+C:\Users\Fox\source\repos\AlwaysChat_Client\AlwaysChat_Client\bin\Debug\AlwaysChat_Client.exe.config
+C:\Users\Fox\source\repos\AlwaysChat_Client\AlwaysChat_Client\bin\Debug\AlwaysChat_Client.exe
+C:\Users\Fox\source\repos\AlwaysChat_Client\AlwaysChat_Client\bin\Debug\AlwaysChat_Client.pdb
+C:\Users\Fox\source\repos\AlwaysChat_Client\AlwaysChat_Client\obj\Debug\AlwaysChat_Client.csprojAssemblyReference.cache
+C:\Users\Fox\source\repos\AlwaysChat_Client\AlwaysChat_Client\obj\Debug\MainWindow.g.cs
+C:\Users\Fox\source\repos\AlwaysChat_Client\AlwaysChat_Client\obj\Debug\App.g.cs
+C:\Users\Fox\source\repos\AlwaysChat_Client\AlwaysChat_Client\obj\Debug\AlwaysChat_Client_MarkupCompile.cache
+C:\Users\Fox\source\repos\AlwaysChat_Client\AlwaysChat_Client\obj\Debug\AlwaysChat_Client_MarkupCompile.lref
+C:\Users\Fox\source\repos\AlwaysChat_Client\AlwaysChat_Client\obj\Debug\MainWindow.baml
+C:\Users\Fox\source\repos\AlwaysChat_Client\AlwaysChat_Client\obj\Debug\AlwaysChat_Client.g.resources
+C:\Users\Fox\source\repos\AlwaysChat_Client\AlwaysChat_Client\obj\Debug\AlwaysChat_Client.Properties.Resources.resources
+C:\Users\Fox\source\repos\AlwaysChat_Client\AlwaysChat_Client\obj\Debug\AlwaysChat_Client.csproj.GenerateResource.cache
+C:\Users\Fox\source\repos\AlwaysChat_Client\AlwaysChat_Client\obj\Debug\AlwaysChat_Client.csproj.CoreCompileInputs.cache
+C:\Users\Fox\source\repos\AlwaysChat_Client\AlwaysChat_Client\obj\Debug\AlwaysChat_Client.exe
+C:\Users\Fox\source\repos\AlwaysChat_Client\AlwaysChat_Client\obj\Debug\AlwaysChat_Client.pdb
