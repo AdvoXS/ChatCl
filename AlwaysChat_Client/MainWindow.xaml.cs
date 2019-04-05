@@ -39,7 +39,7 @@ namespace AlwaysChat_Client
                 int bytes = stream.Read(data, 0, data.Length);
                 response.Append(Encoding.UTF8.GetString(data, 0, bytes));
             }
-            while (stream.DataAvailable); // пока данные есть в потоке
+            while ((!response.Equals("VnI28i7:V)y"))); // пока данные есть в потоке
             string chatMessage = Convert.ToString(response);
             chatViewBox.AppendText(chatMessage);
 
