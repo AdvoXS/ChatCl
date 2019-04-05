@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Net.Sockets;
+using System.Threading;
 namespace AlwaysChat_Client
 {
     /// <summary>
@@ -25,6 +26,7 @@ namespace AlwaysChat_Client
         public MainWindow()
         {
             InitializeComponent();
+            chatViewBox.IsReadOnly = true;
         }
         public void startSession()
         {
@@ -32,8 +34,9 @@ namespace AlwaysChat_Client
             {
                 TcpClient client = new TcpClient();
                 client.Connect(server, port);
-
-                byte[] data = new byte[256];
+                Action act1 = () => connectButton.IsEnabled = false;
+                this.Dispatcher.Invoke(act1);
+                byte[] data = new byte[1024];
                 StringBuilder response = new StringBuilder();
                 NetworkStream stream = client.GetStream();
                 do
@@ -41,7 +44,7 @@ namespace AlwaysChat_Client
                     int bytes = stream.Read(data, 0, data.Length);
                     response.Append(Encoding.UTF8.GetString(data, 0, bytes));
                 }
-                while ((!response.Equals("VnI28i7:V)y"))); // пока данные есть в потоке
+                while ((!response.Equals("VnI28i7:V)y")));
                 string chatMessage = Convert.ToString(response);
                 chatViewBox.AppendText(chatMessage);
 
@@ -52,17 +55,23 @@ namespace AlwaysChat_Client
             catch(SocketException e)
             {
                 MessageBox.Show(e.Message + "\n" + "Код ошибки: " + e.ErrorCode);
-                
+                Action act2 = () => connectButton.IsEnabled = true;
+                this.Dispatcher.Invoke(act2);
             }
             catch(Exception e)
             {
                 MessageBox.Show(e.Message);
+                Action act2 = () => connectButton.IsEnabled = true;
+                this.Dispatcher.Invoke(act2);
             }
         }
 
         private void ConnectButton_Click(object sender, RoutedEventArgs e)
         {
-            startSession();
+            Thread threadSession = new Thread(new ThreadStart(startSession));
+            threadSession.Start();
+            
+            //startSession();
         }
     }
 }
