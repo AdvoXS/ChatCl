@@ -23,30 +23,37 @@ namespace AlwaysChat_Client
     {
         private const int port = 8888;
         private const string server = "127.0.0.1";
+        TcpClient client;
+        NetworkStream stream;
         public MainWindow()
         {
             InitializeComponent();
             chatViewBox.IsReadOnly = true;
+            messageRichTextBox.Document.Blocks.Add(new Paragraph(new Run("Text")));
         }
         public void startSession()
         {
             try
             {
-                TcpClient client = new TcpClient();
+                client = new TcpClient();
                 client.Connect(server, port);
                 Action act1 = () => connectButton.IsEnabled = false;
+                Action appMessage;
                 this.Dispatcher.Invoke(act1);
-                byte[] data = new byte[1024];
+                byte[] data = new byte[2048];
                 StringBuilder response = new StringBuilder();
-                NetworkStream stream = client.GetStream();
+                stream = client.GetStream();
                 do
                 {
                     int bytes = stream.Read(data, 0, data.Length);
                     response.Append(Encoding.UTF8.GetString(data, 0, bytes));
+                    string chatMessage = Convert.ToString(response);
+                    appMessage = ()=> chatViewBox.AppendText(chatMessage);
+                    this.Dispatcher.Invoke(appMessage);
+
                 }
                 while ((!response.Equals("VnI28i7:V)y")));
-                string chatMessage = Convert.ToString(response);
-                chatViewBox.AppendText(chatMessage);
+                
 
                 // Закрываем потоки
                 stream.Close();
@@ -62,7 +69,7 @@ namespace AlwaysChat_Client
             {
                 MessageBox.Show(e.Message);
                 Action act2 = () => connectButton.IsEnabled = true;
-                this.Dispatcher.Invoke(act2);
+                this.Dispatcher.Invoke(act2);   //BUG when close app
             }
         }
 
@@ -72,6 +79,25 @@ namespace AlwaysChat_Client
             threadSession.Start();
             
             //startSession();
+        }
+
+        private void RichTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void RichTextBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key==Key.Enter)
+            {
+                if(stream!=null && client != null)//&& messageRichTextBox.ToString()!=""
+                {
+                    
+                    string message = new TextRange(messageRichTextBox.Document.ContentStart, messageRichTextBox.Document.ContentEnd).Text;
+                    byte[] data  = Encoding.UTF8.GetBytes(message);
+                    stream.Write(data, 0, data.Length);
+                }
+            }
         }
     }
 }
