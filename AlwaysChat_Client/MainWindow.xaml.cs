@@ -18,6 +18,22 @@ namespace AlwaysChat_Client
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
+    /// 
+
+
+
+
+
+
+    //    БРЫСЬ ОТСЮДА (ง •̀_•́)ง 
+
+
+
+
+
+
+
+
     public partial class MainWindow : Window
     {
         private const int port = 8888;
