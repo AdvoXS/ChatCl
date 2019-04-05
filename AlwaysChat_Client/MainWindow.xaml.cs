@@ -28,24 +28,36 @@ namespace AlwaysChat_Client
         }
         public void startSession()
         {
-            TcpClient client = new TcpClient();
-            client.Connect(server, port);
-
-            byte[] data = new byte[256];
-            StringBuilder response = new StringBuilder();
-            NetworkStream stream = client.GetStream();
-            do
+            try
             {
-                int bytes = stream.Read(data, 0, data.Length);
-                response.Append(Encoding.UTF8.GetString(data, 0, bytes));
-            }
-            while ((!response.Equals("VnI28i7:V)y"))); // пока данные есть в потоке
-            string chatMessage = Convert.ToString(response);
-            chatViewBox.AppendText(chatMessage);
+                TcpClient client = new TcpClient();
+                client.Connect(server, port);
 
-            // Закрываем потоки
-            stream.Close();
-            client.Close();
+                byte[] data = new byte[256];
+                StringBuilder response = new StringBuilder();
+                NetworkStream stream = client.GetStream();
+                do
+                {
+                    int bytes = stream.Read(data, 0, data.Length);
+                    response.Append(Encoding.UTF8.GetString(data, 0, bytes));
+                }
+                while ((!response.Equals("VnI28i7:V)y"))); // пока данные есть в потоке
+                string chatMessage = Convert.ToString(response);
+                chatViewBox.AppendText(chatMessage);
+
+                // Закрываем потоки
+                stream.Close();
+                client.Close();
+            }
+            catch(SocketException e)
+            {
+                MessageBox.Show(e.Message + "\n" + "Код ошибки: " + e.ErrorCode);
+                
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
 
         private void ConnectButton_Click(object sender, RoutedEventArgs e)
